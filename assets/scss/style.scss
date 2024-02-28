@@ -94,7 +94,7 @@ p {
 }
 
 .active {
-    color: lime;
+    color: $primary-color;
     font-weight: 600;
 }
 
@@ -111,12 +111,26 @@ body {
         scroll-behavior: smooth;
         overflow: auto;
         scroll-snap-type: y mandatory;
+        margin-bottom: -149px;
+    }
+}
+
+.wrapper {
+    @media (min-width: $large) {
+        position: relative;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
     }
 }
 
 section {
     @media (min-width: $small) {
-        width: calc(100vw - 160px);
+        //        width: calc(100vw - 160px);
         height: 100vh;
         background-size: cover;
         scroll-snap-align: start;
@@ -128,14 +142,74 @@ section {
         height: calc(100vh - 122px);
         background: url(../img/main-mobile-bgr.jpg) no-repeat center top;
         background-position: 74% 7%;
+        @media (min-width: $medium) {
+            height: 100vh;
+            background: url(../img/main-tablet-bgr.jpg) no-repeat center;
+        }
+        @media (min-width: $large) {
+            background: url(../img/main-desktop-bgr.jpg) no-repeat center;
+        }
         h1 {
             padding: 60px 0 0 40px;
+            @media (min-width: $medium) {
+                bottom: 55vh;
+                font-size: 10vw;
+            }
+            @media (min-width: $large) {
+                font-size: 80px;
+                text-align: center;
+                bottom: auto;
+                top: 20%;
+            }
         }
         h2 {
             margin: 72px 0 0 40px;
+            @media (min-width: $medium) {
+                bottom: 34vh;
+                font-size: 5vw;
+            }
+            @media (min-width: $large) {
+                font-size: 50px;
+                bottom: auto;
+                top: 50%;
+            }
         }
         h3 {
             margin: 0 0 0 38px;
+            @media (min-width: $medium) {
+                bottom: 30vh;
+                font-size: 4vw;
+            }
+            @media (min-width: $large) {
+                font-size: 40px;
+                bottom: auto;
+                top: 55%;
+            }
+        }
+        .tagline {
+            @media (min-width: $medium) {
+                bottom: 8vh;
+                font-size: 4vw;
+            }
+            @media (min-width: $large) {
+                font-size: 30px;
+            }
+        }
+        h1,
+        h2,
+        h3,
+        .tagline {
+            @media (min-width: $medium) {
+                position: absolute;
+                margin: 0;
+                padding: 0;
+            }
+            @media (min-width: $large) {
+                left: 0;
+                right: 0;
+                margin: auto;
+                text-align: center;
+            }
         }
     }
     &:nth-child(2) {
@@ -155,17 +229,47 @@ section {
 
 /* About section */
 
+.about {
+    .wrapper {
+        @media (min-width: $large) {}
+    }
+    h2,
+    p {
+        @media (min-width: $medium) {
+            width: 70%;
+            margin: auto;
+        }
+        @media (min-width: $large) {
+            width: 50%;
+        }
+    }
+}
+
 .about-icons {
     text-align: center;
     span {
         color: $primary-color;
         font-size: $fs-xxl;
         margin-top: -55px;
-        margin-bottom: 60px;
+        margin-bottom: 30px;
         &:first-child {
             font-size: 150px;
             margin: 0;
         }
+    }
+}
+
+.image-placeholder {
+    width: 70%;
+    margin: auto;
+    @media (min-width: $large) {
+        width: 20%;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 40px;
     }
 }
 
@@ -175,34 +279,99 @@ section {
 .services {
     padding: 30px 15px;
     background: $primary-bgr;
+    .wrapper {
+        @media (min-width: $large) {
+            width: 85%;
+            margin: auto;
+        }
+    }
+    h2 {
+        @media (min-width: $medium) {
+            margin: 40px 0;
+        }
+    }
 }
 
 .service-placeholder {
     text-align: center;
     padding: 15px;
+    @media (min-width: $large) {
+        width: 45%;
+        display: inline-block;
+        float: left;
+    }
     span {
         color: #fff;
-        font-size: 120px;
-        background-color: #ba8491;
+        font-size: 100px;
+        background-color: $primary-color;
         margin-bottom: 15px;
+        @media (min-width: $medium) {
+            font-size: 100px;
+        }
+    }
+    p {
+        @media (min-width: $medium) {
+            width: 70%;
+            margin: auto;
+        }
+    }
+    &:nth-child(odd) {
+        @media (min-width: $large) {
+            margin-right: 7%;
+        }
     }
 }
 
 .projects {
     padding: 30px 15px;
     background: $primary-bgr;
+    .wrapper {
+        @media (min-width: $medium) {
+            width: 80%;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+    }
     h2 {
         text-align: center;
+        margin-bottom: 15px;
+        @media (min-width: $medium) {
+            margin: 40px 0;
+        }
+    }
+    .tagline {
+        @media (min-width: $medium) {
+            text-align: center;
+            margin-bottom: 60px;
+            margin-left: 0;
+        }
+        @media (min-width: $large) {
+            font-size: $fs-medium;
+            margin-bottom: 40px;
+        }
     }
 }
 
 .project-placehoder {
     text-align: center;
+    @media (min-width: $medium) {
+        margin: 20px 0;
+    }
     img {
         width: 100%;
         height: auto;
         display: block;
         margin: auto;
+        @media (min-width: $large) {
+            max-width: 450px;
+        }
+    }
+    &:nth-child(even) {
+        @media (min-width: $medium) {
+            margin-right: 4%;
+        }
     }
 }
 
@@ -244,6 +413,19 @@ section {
 /* Contact form */
 
 .contact {
+    .wrapper {
+        @media (min-width: $medium) {
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+        @media (min-width: $large) {
+            width: 53%;
+            margin: auto;
+        }
+    }
+    position: relative;
     h2 {
         text-align: center;
         padding: 40px 20px;
@@ -259,6 +441,10 @@ section {
         .form-field {
             position: relative;
             margin: 32px 0;
+            &:last-child {
+                text-align: center;
+                margin-top: 0;
+            }
         }
         .input-text {
             display: block;
@@ -308,6 +494,11 @@ section {
         }
     }
     .contact-info {
+        .col-half {
+            @media (min-width: $medium) {
+                width: 100%;
+            }
+        }
         text-align: center;
         padding-bottom: 40px;
         p {
@@ -326,9 +517,15 @@ section {
 /* Footer */
 
 footer {
-    background-color: $text-color;
+    background-color: $primary-color;
     padding: 10px;
     color: #fff;
+    @media (min-width: $medium) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
     .socials {
         text-align: center;
         svg {
